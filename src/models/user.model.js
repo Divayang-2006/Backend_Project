@@ -44,13 +44,12 @@ const userSchema = new Schema({
    },
    refreshtoken: {
       type: string,
-      required: true
    }   
 }, {timestamps: true})
 
 userSchema.pre("save", async function(next){ // pre hook for assigning certain tasks just before the saving(in this case) of data
    if(!this.isModified("password")) return next()
-   this.password = bcrypt.hash(this.password, 10)
+   this.password = await bcrypt.hash(this.password, 10)
    next()
 });
 
