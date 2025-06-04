@@ -1,5 +1,3 @@
-// 
-
 import { Router } from "express";
 import { loginUser, registerUser, logoutUser, refreshAccessToken } from "../controllers/user.controller.js";
 import { upload } from "../middleware/multer.middleware.js"
