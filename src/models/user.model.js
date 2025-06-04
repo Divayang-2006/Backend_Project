@@ -21,16 +21,16 @@ const userSchema = new Schema({
       trim: true
    },
    fullname: {
-      type: string,
+      type: String,
       required: true,
       trim: true,
       index: true
    },
    avatar: {
-      type: string // cludilary URL
+      type: String // cludilary URL
    },
    coverimage: {
-      type: string
+      type: String
    },
    watchHistory: [
       {
@@ -39,11 +39,11 @@ const userSchema = new Schema({
       }
    ],
    password: {
-      type: string,
+      type: String,
       required: [true, "Password is requird !!!"]
    },
-   refreshtoken: {
-      type: string,
+   refreshToken: {
+      type: String
    }   
 }, {timestamps: true})
 
@@ -70,7 +70,7 @@ userSchema.methods.generateAccessToken = function(){
          expiresIn: process.env.ACCESS_TOKEN_EXPIRY
       }
    )
-}
+};
 userSchema.methods.generateRefreshToken = function(){
    return jwt.sign(
       {
@@ -81,6 +81,7 @@ userSchema.methods.generateRefreshToken = function(){
          expiresIn: process.env.REFRESH_TOKEN_EXPIRY
       }
    )
-}
+};
 
-export const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema) ;
+export default User
