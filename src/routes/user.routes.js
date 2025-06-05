@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, registerUser, logoutUser, refreshAccessToken } from "../controllers/user.controller.js";
+import { loginUser, registerUser, logoutUser, refreshAccessToken, getCurrentUser, changeCurrentPassword } from "../controllers/user.controller.js";
 import { upload } from "../middleware/multer.middleware.js"
 import { verifyJWT } from "../middleware/auth.middleware.js";
 const router = Router()
@@ -31,6 +31,11 @@ router.route("/logout").post(
 
 router.route("/refresh-token").post(
    refreshAccessToken
+)
+
+router.route("/getCurrentUser").post(
+   verifyJWT, // Use of MiddleWare is to fetch and Verify User and then it passes to the next route (Very Convient way) 
+   getCurrentUser
 )
 
 

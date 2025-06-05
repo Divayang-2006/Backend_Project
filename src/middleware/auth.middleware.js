@@ -1,3 +1,6 @@
+// This Middleware is Used for the Verfication and Fetching of User By 
+// using the Refresh Token Cookie Stored in User Browser
+
 import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken"
